@@ -1,0 +1,79 @@
+[System]
+Name='revisi Fuzzy ESP32'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=2
+NumRules=27
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='Temperature'
+Range=[0 40]
+NumMFs=3
+MF1='Dingin':'trapmf',[0 0 10 19]
+MF2='Normal':'trimf',[15 25 32]
+MF3='Panas':'trapmf',[31 35 40 40]
+
+[Input2]
+Name='Humidity'
+Range=[0 100]
+NumMFs=3
+MF1='Kering':'trapmf',[0 0 5 45]
+MF2='Normal':'trimf',[45 55 70]
+MF3='Lembab':'trapmf',[68.5 96.5 100 100]
+
+[Input3]
+Name='Soil_Moisture'
+Range=[0 100]
+NumMFs=3
+MF1='Kering':'trapmf',[0 0 4 36]
+MF2='Normal':'trimf',[30 40 65]
+MF3='Basah':'trapmf',[64 96 100 100]
+
+[Output1]
+Name='Mendinginkan'
+Range=[0 1]
+NumMFs=2
+MF1='Mati':'constant',[0]
+MF2='Mendinginkan':'constant',[1]
+
+[Output2]
+Name='Menyiram'
+Range=[0 1]
+NumMFs=2
+MF1='Mati':'constant',[0]
+MF2='Menyiram':'constant',[1]
+
+[Rules]
+1 1 1, 2 2 (1) : 1
+1 1 2, 2 1 (1) : 1
+1 1 3, 2 1 (1) : 1
+1 2 1, 1 2 (1) : 1
+1 2 2, 1 1 (1) : 1
+1 2 3, 1 1 (1) : 1
+1 3 1, 1 2 (1) : 1
+1 3 2, 1 1 (1) : 1
+1 3 3, 1 1 (1) : 1
+2 1 1, 2 2 (1) : 1
+2 1 2, 2 1 (1) : 1
+2 1 3, 2 1 (1) : 1
+2 2 1, 1 2 (1) : 1
+2 2 2, 1 1 (1) : 1
+2 2 3, 1 1 (1) : 1
+2 3 1, 1 2 (1) : 1
+2 3 2, 1 1 (1) : 1
+2 3 3, 1 1 (1) : 1
+3 1 1, 2 2 (1) : 1
+3 1 2, 2 1 (1) : 1
+3 1 3, 2 1 (1) : 1
+3 2 1, 2 2 (1) : 1
+3 2 2, 2 1 (1) : 1
+3 2 3, 2 1 (1) : 1
+3 3 1, 2 2 (1) : 1
+3 3 2, 2 1 (1) : 1
+3 3 3, 2 1 (1) : 1
